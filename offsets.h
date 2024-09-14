@@ -9,6 +9,8 @@ const uintptr_t Z_POS_OFFSET = 0x2C;            // Offset for z position
 const uintptr_t Y_POS_OFFSET = 0x30;            // Offset for y position
 const uintptr_t HEALTH_OFFSET = 0xEC;           // Offset for health
 const uintptr_t ARMOR_OFFSET = 0xF0;            // Offset for armor
+const uintptr_t AMMO_OFFSET = 0x140;   			// Offset for ammo?
+const uintptr_t GRENADES_OFFSET = 0x144;        // Offset for grenades
 const uintptr_t GRAVITY_OFFSET = 0x5D;          // Offset for gravity
 
 
