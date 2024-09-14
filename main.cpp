@@ -8,6 +8,8 @@ int main()
 	DWORD pID, baseModule, localPlayerPtr;
 	int health = 999;
 	int armor = 999;
+	int grenades = 999;
+	int ammo = 999;
 	float viewx;
 	float viewy;
 	float x;
@@ -34,19 +36,13 @@ int main()
 		ReadProcessMemory(handle, (LPCVOID)(localPlayerPtr + VIEW_Y_OFFSET), &viewy, sizeof(viewy), nullptr);
 		ReadProcessMemory(handle, (LPCVOID)(localPlayerPtr + X_POS_OFFSET), &x, sizeof(x), nullptr);
 		ReadProcessMemory(handle, (LPCVOID)(localPlayerPtr + Z_POS_OFFSET), &z, sizeof(z), nullptr);
+		ReadProcessMemory(handle, (LPVOID)(localPlayerPtr + GRAVITY_OFFSET), &gravity, sizeof(gravity), nullptr);
 		ReadProcessMemory(handle, (LPCVOID)(localPlayerPtr + Y_POS_OFFSET), &y, sizeof(y), nullptr);
 
+		WriteProcessMemory(handle, (LPVOID)(localPlayerPtr + AMMO_OFFSET), &ammo, sizeof(ammo), nullptr);
 		WriteProcessMemory(handle, (LPVOID)(localPlayerPtr + HEALTH_OFFSET), &health, sizeof(health), nullptr);
 		WriteProcessMemory(handle, (LPVOID)(localPlayerPtr + ARMOR_OFFSET), &armor, sizeof(armor), nullptr);
-		ReadProcessMemory(handle, (LPVOID)(localPlayerPtr + GRAVITY_OFFSET), &gravity, sizeof(gravity), nullptr);
-		
-		cout 
-		<< x 
-		<< " "
-		<< y
-		<< " "
-		<< z
-		<< endl;
+		WriteProcessMemory(handle, (LPVOID)(localPlayerPtr + GRENADES_OFFSET), &grenades, sizeof(grenades), nullptr);
 
 	}
 
