@@ -24,7 +24,7 @@ int main()
 
 	HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, NULL, pID);
 
-	ReadProcessMemory(handle, (LPCVOID)(baseModule + 0x17E0A8), &localPlayerPtr, sizeof(localPlayerPtr), nullptr);
+	ReadProcessMemory(handle, (LPCVOID)(baseModule + BASE_MODULE_OFFSET), &localPlayerPtr, sizeof(localPlayerPtr), nullptr);
 
 
 	std::cout << std::hex << localPlayerPtr << std::endl;
@@ -42,6 +42,12 @@ int main()
 		WriteProcessMemory(handle, (LPVOID)(localPlayerPtr + HEALTH_OFFSET), &health, sizeof(health), nullptr);
 		WriteProcessMemory(handle, (LPVOID)(localPlayerPtr + ARMOR_OFFSET), &armor, sizeof(armor), nullptr);
 		WriteProcessMemory(handle, (LPVOID)(localPlayerPtr + GRENADES_OFFSET), &grenades, sizeof(grenades), nullptr);
+
+		if (GetAsyncKeyState(VK_F1))
+		{
+			Teleport(y, localPlayerPtr, handle);
+			Sleep(50);
+		};
 
 	}
 
