@@ -1,6 +1,6 @@
 #include "proc.h"
 
-DWORD GetProcessID(const wchar_t* procName) 
+DWORD GetProcessID(const wchar_t* procName)
 {
 	DWORD procID = 0;
 	HANDLE hSnap = (CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0));
@@ -19,7 +19,7 @@ DWORD GetProcessID(const wchar_t* procName)
 					break;
 				}
 			} while (Process32Next(hSnap, &procEntry));
-			
+
 		}
 	}
 	CloseHandle(hSnap);
